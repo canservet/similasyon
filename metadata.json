@@ -2,5 +2,7 @@
   "name": "Brütten Nete Maaş Hesaplama Eğitimi",
   "description": "Adım adım interaktif brütten nete maaş ve bordro hesaplama eğitimi ve simülatörü.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

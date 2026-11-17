@@ -48,8 +48,14 @@ Kullanıcının sorusuna veya mevcut adım durumuna (${context || 'genel'}) daya
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== 'production') {
+    app.get(['/', '/index.html'], (_req, res) => {
+      res.sendFile(path.resolve(__dirname, 'index.html'));
+    });
+    app.get('/@vite/client', (_req, res) => {
+      res.type('application/javascript').send('// HMR disabled for single-file applet\n');
+    });
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: { middlewareMode: true, hmr: false },
       appType: 'spa',
     });
     app.use(vite.middlewares);
