@@ -2798,14 +2798,20 @@
           return () => window.removeEventListener('popstate', handlePopState);
         }, []);
 
+
+
         const paylasimLinkiOlustur = () => {
           const url = window.location.href;
-          navigator.clipboard.writeText(url).then(() => {
-            setPaylasimKopyalandi(true);
-            setTimeout(() => setPaylasimKopyalandi(false), 3000);
-          }).catch(() => {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(() => {
+              setPaylasimKopyalandi(true);
+              setTimeout(() => setPaylasimKopyalandi(false), 3000);
+            }).catch(() => {
+              prompt("Eğitmen / Öğrenci Paylaşım Linkiniz:", url);
+            });
+          } else {
             prompt("Eğitmen / Öğrenci Paylaşım Linkiniz:", url);
-          });
+          }
         };
 
         return (
